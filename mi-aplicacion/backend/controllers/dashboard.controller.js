@@ -1,0 +1,1 @@
+// Controlador del dashboard (placeholder)

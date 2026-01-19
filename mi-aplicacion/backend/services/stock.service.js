@@ -1,0 +1,1 @@
+// Lógica de stock (placeholder)
