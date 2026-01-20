@@ -1,1 +1,135 @@
-<!-- Página de categorías -->
+<!--
+  Vista: Categorías
+  Layout: Header fijo, Footer fijo, dos columnas (listado y formulario)
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorías</title>
+  <!-- CSS compartido -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/forms.css">
+  <link rel="stylesheet" href="../assets/css/tables.css">
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header y nav se insertan por JS -->
+  <script src="../components/navbar.js"></script>
+  <script>renderNavbar('Categorías');</script>
+
+  <!-- Layout principal -->
+  <main class="main-layout">
+    <!-- Columna izquierda: Listado -->
+    <section class="column column--left">
+      <div class="list-container">
+        <table class="table table--categories">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filas de ejemplo, reemplazar por datos dinámicos -->
+            <tr>
+              <td>1</td>
+              <td>Alimentos</td>
+              <td>Comestibles y snacks</td>
+              <td><span class="switch switch--on">On</span></td>
+              <td class="actions-cell">
+                <button class="btn btn--edit" title="Editar"><span class="btn__icon">✏️</span> Editar</button>
+                <button class="btn btn--toggle" title="Activar/Desactivar"><span class="btn__icon">🔄</span></button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Bebidas</td>
+              <td>Gaseosas y jugos</td>
+              <td><span class="switch switch--off">Off</span></td>
+              <td class="actions-cell">
+                <button class="btn btn--edit" title="Editar"><span class="btn__icon">✏️</span> Editar</button>
+                <button class="btn btn--toggle" title="Activar/Desactivar"><span class="btn__icon">🔄</span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 class="list-title">Lista de categorías</h2>
+      </div>
+    </section>
+
+    <!-- Columna derecha: Formulario -->
+    <aside class="column column--right">
+      <form class="form form--categoria">
+        <h2 class="form-title">Agregar / Editar Categoría</h2>
+        <div class="form-group">
+          <label for="nombre_categoria">Nombre de la categoría</label>
+          <input type="text" id="nombre_categoria" name="nombre_categoria" class="input" placeholder="Nombre de la categoría">
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" name="descripcion" class="input" placeholder="Descripción de la categoría">
+        </div>
+        <div class="form-group form-group--inline">
+          <label for="estado">Estado</label>
+          <input type="checkbox" id="estado" name="estado" class="checkbox">
+          <span class="checkbox-label">Activo</span>
+        </div>
+        <button type="submit" class="btn btn--primary btn--large"><span class="btn__icon">➕</span> Agregar categoría</button>
+      </form>
+    </aside>
+  </main>
+  <!-- Footer Futurista -->
+  <footer class="footer-futuristic">
+      <div class="footer-content">
+          <div class="footer-brand">
+              <h3>MCDISTRIBUIDORA</h3>
+              <p class="footer-slogan">"Sabor real, entrega puntual."</p>
+              <p class="footer-description">Distribución para público general.</p>
+          </div>
+          <div class="footer-location">
+              <h4>🎯 Zona de trabajo</h4>
+              <div class="footer-location-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Rojas, Buenos Aires, Argentina</span>
+              </div>
+              <div class="footer-location-item">
+                  <i class="fas fa-truck"></i>
+                  <span>Reparto: Lunes a Viernes</span>
+              </div>
+              <div class="footer-location-item">
+                  <i class="fas fa-clock"></i>
+                  <span>Atención: 24/7</span>
+              </div>
+          </div>
+          <div class="footer-social">
+              <h4>Conectá con nosotros</h4>
+              <a href="https://instagram.com/mc_distribuidora_rojas" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                  <i class="fab fa-instagram"></i>
+                  <span>@mc_distribuidora_rojas</span>
+              </a>
+              <a href="https://instagram.com/mc_distribuidora_rojas" target="_blank" rel="noopener noreferrer" class="footer-cta">
+                  <i class="fab fa-instagram"></i>
+                  Seguinos en Instagram
+              </a>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p class="footer-copyright">
+              &copy; 2025 MCDISTRIBUIDORA. Todos los derechos reservados.
+          </p>
+          <div class="footer-links">
+              <a href="/privacidad">Política de privacidad</a>
+          </div>
+      </div>
+  </footer>
+  <!-- JS vacío, preparado para lógica futura -->
+  <script src="../assets/js/categorias.js"></script>
+</body>
+</html>
