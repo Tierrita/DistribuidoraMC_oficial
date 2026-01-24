@@ -1,0 +1,15 @@
+/* Estilos específicos del dashboard */
+.dashboard-widget {
+	background: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-principal-dark) 100%);
+	color: var(--color-secundario);
+	border-radius: 16px;
+	box-shadow: 0 4px 16px var(--color-shadow);
+	padding: 2rem;
+	margin-bottom: 2rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+	transition: box-shadow 0.2s;
+}
+.dashboard-widget:hover {
+	box-shadow: 0 8px 32px var(--color-shadow);
+}

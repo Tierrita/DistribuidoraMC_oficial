@@ -1,0 +1,42 @@
+/* Estilos generales principales */
+/* Paleta avanzada y variables globales */
+:root {
+  --color-principal: #e53935;
+  --color-principal-dark: #b71c1c;
+  --color-secundario: #fff;
+  --color-acento: #ff5252;
+  --color-bg: #f9f9fb;
+  --color-bg-dark: #23242a;
+  --color-footer-bg: linear-gradient(90deg, #23242a 0%, #b71c1c 100%);
+  --color-footer-acento: #ff5252;
+  --color-shadow: rgba(229,57,53,0.12);
+  --color-border: #e0e0e0;
+  --color-table-header: #ffeaea;
+  --color-table-row: #fff;
+  --color-table-row-alt: #fff5f5;
+  --color-success: #43a047;
+  --color-warning: #ffa726;
+  --color-error: #e53935;
+}
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: #23242a;
+  min-height: 100vh;
+}
+a {
+  color: var(--color-principal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--color-acento);
+}
