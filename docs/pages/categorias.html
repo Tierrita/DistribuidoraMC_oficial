@@ -1,135 +1,202 @@
 <!--
-  Vista: Categorías
-  Layout: Header fijo, Footer fijo, dos columnas (listado y formulario)
+    Archivo: categorias.html
+    Descripción: Página de gestión de categorías de MC Distribuidora.
+    Estructura: HTML5 + TailwindCSS + comentarios técnicos para cada sección.
 -->
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Categorías</title>
-  <!-- CSS compartido -->
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/forms.css">
-  <link rel="stylesheet" href="../assets/css/tables.css">
-  <!-- Font Awesome para íconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-  <!-- Header y nav se insertan por JS -->
-  <script src="../components/navbar.js"></script>
-  <script>renderNavbar('Categorías');</script>
-
-  <!-- Layout principal -->
-  <main class="main-layout">
-    <!-- Columna izquierda: Listado -->
-    <section class="column column--left">
-      <div class="list-container">
-        <table class="table table--categories">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Filas de ejemplo, reemplazar por datos dinámicos -->
-            <tr>
-              <td>1</td>
-              <td>Alimentos</td>
-              <td>Comestibles y snacks</td>
-              <td><span class="switch switch--on">On</span></td>
-              <td class="actions-cell">
-                <button class="btn btn--edit" title="Editar"><span class="btn__icon">✏️</span> Editar</button>
-                <button class="btn btn--toggle" title="Activar/Desactivar"><span class="btn__icon">🔄</span></button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Bebidas</td>
-              <td>Gaseosas y jugos</td>
-              <td><span class="switch switch--off">Off</span></td>
-              <td class="actions-cell">
-                <button class="btn btn--edit" title="Editar"><span class="btn__icon">✏️</span> Editar</button>
-                <button class="btn btn--toggle" title="Activar/Desactivar"><span class="btn__icon">🔄</span></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h2 class="list-title">Lista de categorías</h2>
-      </div>
-    </section>
-
-    <!-- Columna derecha: Formulario -->
-    <aside class="column column--right">
-      <form class="form form--categoria">
-        <h2 class="form-title">Agregar / Editar Categoría</h2>
-        <div class="form-group">
-          <label for="nombre_categoria">Nombre de la categoría</label>
-          <input type="text" id="nombre_categoria" name="nombre_categoria" class="input" placeholder="Nombre de la categoría">
+<html class="light" lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Categorías - MC Distribuidora</title>
+        <!-- Tailwind CSS y fuentes -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+        <!-- Configuración de Tailwind personalizada -->
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#d47311",
+                            "background-light": "#f8f7f6",
+                            "background-dark": "#221910",
+                        },
+                        fontFamily: {
+                            display: ["Work Sans", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <!-- Enlace a los estilos globales -->
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body class="bg-background-light dark:bg-background-dark min-h-screen text-[#181411] dark:text-[#f8f7f6]">
+        <!-- Contenedor principal de la aplicación -->
+        <div class="flex h-full min-h-screen flex-col">
+            <!-- Barra de navegación superior -->
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e6e0db] dark:border-[#3d2e21] bg-white dark:bg-[#2c2116] px-10 py-3">
+                <div class="flex items-center gap-4">
+                    <!-- Logo de la empresa -->
+                    <div class="size-8 text-primary">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_6_535)">
+                                <path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6_535"><rect fill="white" height="48" width="48" /></clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <!-- Título de la aplicación -->
+                    <h2 class="text-[#181411] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
+                        MC Distribuidora
+                    </h2>
+                </div>
+                <!-- Navegación principal superior -->
+                <div class="flex flex-1 justify-end gap-8">
+                    <nav class="flex items-center gap-9">
+                        <!-- Enlaces de navegación principales -->
+                        <a class="text-[#181411] dark:text-[#f8f7f6] text-sm font-medium hover:text-primary transition-colors" href="../index.html">Dashboard</a>
+                        <a class="text-[#181411] dark:text-[#f8f7f6] text-sm font-medium hover:text-primary transition-colors" href="inventario.html">Inventario</a>
+                        <a class="text-[#181411] dark:text-[#f8f7f6] text-sm font-medium hover:text-primary transition-colors" href="ventas.html">Ventas</a>
+                        <a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="categorias.html">Categorías</a>
+                    </nav>
+                    <!-- Botones de acciones rápidas (configuración, logout, perfil) -->
+                    <div class="flex gap-2">
+                        <button class="flex size-10 items-center justify-center rounded-lg bg-[#f4f2f0] dark:bg-[#3d2e21] text-[#181411] dark:text-white">
+                            <span class="material-symbols-outlined">settings</span>
+                        </button>
+                        <button class="flex size-10 items-center justify-center rounded-lg bg-[#f4f2f0] dark:bg-[#3d2e21] text-[#181411] dark:text-white">
+                            <span class="material-symbols-outlined">logout</span>
+                        </button>
+                        <!-- Avatar de usuario -->
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Profile picture of the deli manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1Q-4XDyYW-Lht7dY7qXpWOUCdK0jFow5J32aFhL9ZT8czNB2nvwzhslu1QxZE_xuLzSWCVsg7X6_gH1Ev5La0VLidmAqa2khhmVTG9ZDx6kCqQdKqHcCkW_0XWw3irrPV_fA-8UzaSglVtN6jMccXLcwQU2mZM0y8XfbgURYmzf3fUuoqa5zRlRMRl-SdfOnRE3ynYvy3kFzjMW_LcDdPGQQqS49iN2I-ReHyMZJRVSxJ9QH6-xTei4UShwbsC-PtQpdMz_uuye38");'></div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex flex-1 overflow-hidden">
+                <!-- Sidebar de navegación lateral -->
+                <aside class="w-64 border-r border-[#e6e0db] dark:border-[#3d2e21] bg-white dark:bg-[#2c2116] p-4 flex flex-col gap-6">
+                    <div class="flex gap-3 items-center">
+                        <div class="bg-primary/10 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-primary">category</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h1 class="text-[#181411] dark:text-white text-base font-bold">Gestión de Categorías</h1>
+                            <p class="text-[#897561] text-xs font-normal">Organizá tus productos</p>
+                        </div>
+                    </div>
+                    <!-- Enlaces de navegación lateral -->
+                    <div class="flex flex-col gap-2">
+                        <a class="flex items-center gap-3 px-3 py-2 text-[#897561] hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] rounded-lg transition-colors" href="../index.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <p class="text-sm font-medium">Dashboard</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-[#897561] hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] rounded-lg transition-colors" href="inventario.html">
+                            <span class="material-symbols-outlined">inventory_2</span>
+                            <p class="text-sm font-medium">Inventario</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-[#897561] hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] rounded-lg transition-colors" href="ventas.html">
+                            <span class="material-symbols-outlined">receipt_long</span>
+                            <p class="text-sm font-medium">Ventas</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="categorias.html">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">category</span>
+                            <p class="text-sm font-bold">Categorías</p>
+                        </a>
+                    </div>
+                </aside>
+                <!-- Área principal de contenido -->
+                <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+                    <div class="max-w-6xl mx-auto space-y-6">
+                        <!-- Encabezado de la página -->
+                        <div class="flex flex-wrap justify-between items-end gap-3">
+                            <div class="flex flex-col gap-1">
+                                <p class="text-[#181411] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Categorías de Productos</p>
+                                <p class="text-[#897561] text-base font-normal">Gestioná y organizá los grupos de tu inventario.</p>
+                            </div>
+                            <!-- Acción rápida: agregar categoría -->
+                            <button class="flex items-center gap-2 px-6 py-2.5 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors text-sm shadow-sm shadow-primary/20">
+                                <span class="material-symbols-outlined text-lg">add</span>
+                                Agregar Categoría
+                            </button>
+                        </div>
+                        <!-- Cards Grid de ejemplo de categorías -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            <!-- Tarjeta de ejemplo -->
+                            <div class="group bg-white dark:bg-[#3d2e21]/30 border border-[#e6e0db] dark:border-[#3d2e21] rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300">
+                                <div class="h-40 bg-cover bg-center relative" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9p893tA5EwshweFINI0xi4TG4NDi_5MaY0G-Gee3iSR7RaQuinerM0v26YGZT3fbYuA-t8eVscbH-MuG6SWRzuMfo3JECHlO67EQf7oOKSmqjQG6hEluHjvYqQadIPjY7OKR6X4z0fOcpBJQ8opraOU7BFBeliSwYanGAlGE0362tmTQLhYUNZbn5JJTJ-sSCyi_Nau7cyHVo-FaEGCvjVN58EbHQIS5GDn8Sxda_HnPcmNkQ1q3gxOOB_flTzUtBPPp31_ZcRLvR')">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4">
+                                        <h3 class="text-white font-bold text-xl">Jamones</h3>
+                                    </div>
+                                </div>
+                                <div class="p-4 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-[#897561]">Productos</p>
+                                        <p class="text-lg font-bold">24 Items</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button class="p-2 text-[#897561] hover:text-primary hover:bg-primary/10 rounded-lg transition-colors">
+                                            <span class="material-symbols-outlined text-xl">edit</span>
+                                        </button>
+                                        <button class="p-2 text-[#897561] hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors">
+                                            <span class="material-symbols-outlined text-xl">delete</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ...más tarjetas de ejemplo... -->
+                        </div>
+                        <!-- Stats Cards de ejemplo -->
+                        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e6e0db] dark:border-[#3d2e21]">
+                                <div class="flex items-center gap-4">
+                                    <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined">grid_view</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-[#897561] text-xs font-bold uppercase tracking-wider">Total Categorías</p>
+                                        <p class="text-2xl font-black">5 Grupos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e6e0db] dark:border-[#3d2e21]">
+                                <div class="flex items-center gap-4">
+                                    <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined">inventory</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-[#897561] text-xs font-bold uppercase tracking-wider">Total Productos</p>
+                                        <p class="text-2xl font-black">127 SKUs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e6e0db] dark:border-[#3d2e21]">
+                                <div class="flex items-center gap-4">
+                                    <div class="size-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-600">
+                                        <span class="material-symbols-outlined">trending_up</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-[#897561] text-xs font-bold uppercase tracking-wider">Más Popular</p>
+                                        <p class="text-2xl font-black italic">Quesos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="descripcion">Descripción</label>
-          <input type="text" id="descripcion" name="descripcion" class="input" placeholder="Descripción de la categoría">
-        </div>
-        <div class="form-group form-group--inline">
-          <label for="estado">Estado</label>
-          <input type="checkbox" id="estado" name="estado" class="checkbox">
-          <span class="checkbox-label">Activo</span>
-        </div>
-        <button type="submit" class="btn btn--primary btn--large"><span class="btn__icon">➕</span> Agregar categoría</button>
-      </form>
-    </aside>
-  </main>
-  <!-- Footer Futurista -->
-  <footer class="footer-futuristic">
-      <div class="footer-content">
-          <div class="footer-brand">
-              <h3>MCDISTRIBUIDORA</h3>
-              <p class="footer-slogan">"Sabor real, entrega puntual."</p>
-              <p class="footer-description">Distribución para público general.</p>
-          </div>
-          <div class="footer-location">
-              <h4>🎯 Zona de trabajo</h4>
-              <div class="footer-location-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Rojas, Buenos Aires, Argentina</span>
-              </div>
-              <div class="footer-location-item">
-                  <i class="fas fa-truck"></i>
-                  <span>Reparto: Lunes a Viernes</span>
-              </div>
-              <div class="footer-location-item">
-                  <i class="fas fa-clock"></i>
-                  <span>Atención: 24/7</span>
-              </div>
-          </div>
-          <div class="footer-social">
-              <h4>Conectá con nosotros</h4>
-              <a href="https://instagram.com/mc_distribuidora_rojas" target="_blank" rel="noopener noreferrer" class="footer-social-link">
-                  <i class="fab fa-instagram"></i>
-                  <span>@mc_distribuidora_rojas</span>
-              </a>
-              <a href="https://instagram.com/mc_distribuidora_rojas" target="_blank" rel="noopener noreferrer" class="footer-cta">
-                  <i class="fab fa-instagram"></i>
-                  Seguinos en Instagram
-              </a>
-          </div>
-      </div>
-      <div class="footer-bottom">
-          <p class="footer-copyright">
-              &copy; 2025 MCDISTRIBUIDORA. Todos los derechos reservados.
-          </p>
-          <div class="footer-links">
-              <a href="/privacidad">Política de privacidad</a>
-          </div>
-      </div>
-  </footer>
-  <!-- JS vacío, preparado para lógica futura -->
-  <script src="../assets/js/categorias.js"></script>
-</body>
+    </body>
 </html>

@@ -1,70 +1,180 @@
+<!--
+    Archivo: ventas.html
+    Descripción: Página de historial de ventas de MC Distribuidora.
+    Estructura: HTML5 + TailwindCSS + comentarios técnicos para cada sección.
+-->
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ventas</title>
-  <!-- CSS compartido -->
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/forms.css">
-  <link rel="stylesheet" href="../assets/css/tables.css">
-  <!-- Font Awesome para íconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-  <!-- Header y nav se insertan por JS -->
-  <script src="../components/navbar.js"></script>
-  <script>renderNavbar('Ventas');</script>
-  <!-- Contenido principal -->
-  <main class="main-layout">
-    <!-- Aquí va el contenido de ventas -->
-  </main>
-  <!-- Footer Futurista -->
-  <footer class="footer-futuristic">
-      <div class="footer-content">
-          <div class="footer-brand">
-              <h3>MCDISTRIBUIDORA</h3>
-              <p class="footer-slogan">"Sabor real, entrega puntual."</p>
-              <p class="footer-description">Distribución para público general.</p>
-          </div>
-          <div class="footer-location">
-              <h4>🎯 Zona de trabajo</h4>
-              <div class="footer-location-item">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Rojas, Buenos Aires, Argentina</span>
-              </div>
-              <div class="footer-location-item">
-                  <i class="fas fa-truck"></i>
-                  <span>Reparto: Lunes a Viernes</span>
-              </div>
-              <div class="footer-location-item">
-                  <i class="fas fa-clock"></i>
-                  <span>Atención: 24/7</span>
-              </div>
-          </div>
-          <div class="footer-social">
-              <h4>Conectá con nosotros</h4>
-              <a href="https://instagram.com/mc_distribuidora_rojas" target="_blank" rel="noopener noreferrer" class="footer-social-link">
-                  <i class="fab fa-instagram"></i>
-                  <span>@mc_distribuidora_rojas</span>
-              </a>
-              <a href="https://instagram.com/mc_distribuidora_rojas" target="_blank" rel="noopener noreferrer" class="footer-cta">
-                  <i class="fab fa-instagram"></i>
-                  Seguinos en Instagram
-              </a>
-          </div>
-      </div>
-      <div class="footer-bottom">
-          <p class="footer-copyright">
-              &copy; 2025 MCDISTRIBUIDORA. Todos los derechos reservados.
-          </p>
-          <div class="footer-links">
-              <a href="/privacidad">Política de privacidad</a>
-          </div>
-      </div>
-  </footer>
-  <!-- JS vacío, preparado para lógica futura -->
-  <script src="../assets/js/ventas.js"></script>
-</body>
+<html class="light" lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ventas - MC Distribuidora</title>
+        <!-- Tailwind CSS y fuentes -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+        <!-- Configuración de Tailwind personalizada -->
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#d47311",
+                            "background-light": "#f8f7f6",
+                            "background-dark": "#221910",
+                        },
+                        fontFamily: {
+                            display: ["Work Sans", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <!-- Enlace a los estilos globales -->
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body class="bg-background-light dark:bg-background-dark min-h-screen text-[#181411] dark:text-[#f8f7f6]">
+        <!-- Contenedor principal de la aplicación -->
+        <div class="flex h-full min-h-screen flex-col">
+            <!-- Barra de navegación superior -->
+            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e6e0db] dark:border-[#3d2e21] bg-white dark:bg-[#2c2116] px-10 py-3">
+                <div class="flex items-center gap-4">
+                    <!-- Logo de la empresa -->
+                    <div class="size-8 text-primary">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_6_535)">
+                                <path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6_535"><rect fill="white" height="48" width="48" /></clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <!-- Título de la aplicación -->
+                    <h2 class="text-[#181411] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
+                        MC Distribuidora
+                    </h2>
+                </div>
+                <!-- Navegación principal superior -->
+                <div class="flex flex-1 justify-end gap-8">
+                    <nav class="flex items-center gap-9">
+                        <!-- Enlaces de navegación principales -->
+                        <a class="text-[#181411] dark:text-[#f8f7f6] text-sm font-medium hover:text-primary transition-colors" href="../index.html">Dashboard</a>
+                        <a class="text-[#181411] dark:text-[#f8f7f6] text-sm font-medium hover:text-primary transition-colors" href="inventario.html">Inventario</a>
+                        <a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="ventas.html">Ventas</a>
+                        <a class="text-[#181411] dark:text-[#f8f7f6] text-sm font-medium hover:text-primary transition-colors" href="clientes.html">Clientes</a>
+                    </nav>
+                    <!-- Botones de acciones rápidas (configuración, logout, perfil) -->
+                    <div class="flex gap-2">
+                        <button class="flex size-10 items-center justify-center rounded-lg bg-[#f4f2f0] dark:bg-[#3d2e21] text-[#181411] dark:text-white">
+                            <span class="material-symbols-outlined">settings</span>
+                        </button>
+                        <button class="flex size-10 items-center justify-center rounded-lg bg-[#f4f2f0] dark:bg-[#3d2e21] text-[#181411] dark:text-white">
+                            <span class="material-symbols-outlined">logout</span>
+                        </button>
+                        <!-- Avatar de usuario -->
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Profile picture of the deli manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1Q-4XDyYW-Lht7dY7qXpWOUCdK0jFow5J32aFhL9ZT8czNB2nvwzhslu1QxZE_xuLzSWCVsg7X6_gH1Ev5La0VLidmAqa2khhmVTG9ZDx6kCqQdKqHcCkW_0XWw3irrPV_fA-8UzaSglVtN6jMccXLcwQU2mZM0y8XfbgURYmzf3fUuoqa5zRlRMRl-SdfOnRE3ynYvy3kFzjMW_LcDdPGQQqS49iN2I-ReHyMZJRVSxJ9QH6-xTei4UShwbsC-PtQpdMz_uuye38");'></div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex flex-1 overflow-hidden">
+                <!-- Sidebar de navegación lateral -->
+                <aside class="w-64 border-r border-[#e6e0db] dark:border-[#3d2e21] bg-white dark:bg-[#2c2116] p-4 flex flex-col gap-6">
+                    <div class="flex gap-3 items-center">
+                        <div class="bg-primary/10 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-primary">receipt_long</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h1 class="text-[#181411] dark:text-white text-base font-bold">Historial de Ventas</h1>
+                            <p class="text-[#897561] text-xs font-normal">Controlá tus transacciones</p>
+                        </div>
+                    </div>
+                    <!-- Enlaces de navegación lateral -->
+                    <div class="flex flex-col gap-2">
+                        <a class="flex items-center gap-3 px-3 py-2 text-[#897561] hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] rounded-lg transition-colors" href="../index.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <p class="text-sm font-medium">Dashboard</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-[#897561] hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] rounded-lg transition-colors" href="inventario.html">
+                            <span class="material-symbols-outlined">inventory_2</span>
+                            <p class="text-sm font-medium">Inventario</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="ventas.html">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">receipt_long</span>
+                            <p class="text-sm font-bold">Ventas</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 text-[#897561] hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] rounded-lg transition-colors" href="clientes.html">
+                            <span class="material-symbols-outlined">group</span>
+                            <p class="text-sm font-medium">Clientes</p>
+                        </a>
+                    </div>
+                </aside>
+                <!-- Área principal de contenido -->
+                <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+                    <div class="max-w-6xl mx-auto space-y-6">
+                        <!-- Encabezado de la página -->
+                        <div class="flex flex-wrap justify-between items-end gap-3">
+                            <div class="flex flex-col gap-1">
+                                <p class="text-[#181411] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Historial de Ventas</p>
+                                <p class="text-[#897561] text-base font-normal">Gestioná y revisá todas las transacciones procesadas.</p>
+                            </div>
+                            <!-- Acciones rápidas: filtrar y exportar -->
+                            <div class="flex gap-3">
+                                <button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-white dark:bg-[#2c2116] border border-[#e6e0db] dark:border-[#3d2e21] text-[#181411] dark:text-white text-sm font-bold hover:bg-gray-50 transition-colors shadow-sm">
+                                    <span class="material-symbols-outlined text-lg">calendar_month</span>
+                                    <span>Filtrar Fecha</span>
+                                </button>
+                                <button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-md">
+                                    <span class="material-symbols-outlined text-lg">download</span>
+                                    <span>Exportar CSV</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Tabla de ventas de ejemplo -->
+                        <div class="bg-white dark:bg-[#2c2116] rounded-xl border border-[#e6e0db] dark:border-[#3d2e21] shadow-sm overflow-hidden mt-8">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-[#f4f2f0]/50 dark:bg-[#3d2e21]/50 border-b border-[#e6e0db] dark:border-[#3d2e21]">
+                                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897561]">Fecha/Hora</th>
+                                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897561]">ID Pedido</th>
+                                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897561]">Cliente</th>
+                                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897561]">Total</th>
+                                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897561]">Pago</th>
+                                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897561]">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-[#e6e0db] dark:divide-[#3d2e21]">
+                                        <!-- Fila de ejemplo de venta -->
+                                        <tr class="hover:bg-[#f4f2f0] dark:hover:bg-[#3d2e21] cursor-pointer transition-colors group">
+                                            <td class="px-6 py-4 text-sm font-medium">27 Ene, 14:30</td>
+                                            <td class="px-6 py-4 text-sm font-mono font-bold text-primary">#ORD-1001</td>
+                                            <td class="px-6 py-4 text-sm">Juan Pérez</td>
+                                            <td class="px-6 py-4 text-sm font-bold">$12.450,00</td>
+                                            <td class="px-6 py-4 text-sm">
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">Efectivo</span>
+                                            </td>
+                                            <td class="px-6 py-4 text-sm">
+                                                <button class="text-primary hover:underline font-bold flex items-center gap-1">
+                                                    Ver <span class="material-symbols-outlined text-sm">chevron_right</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <!-- ...más filas de ejemplo... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
 </html>
